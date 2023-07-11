@@ -1,0 +1,148 @@
+/* By Samuel Terna: 
+   Any improvements or use feel free to hit me up -
+   IG - create_sam_create | Studio_swoosh 
+   Twitter - create_sam_create | Studio_swoosh
+   
+   Year of creation - JULY 2023, 
+   CSS syntax may or may not have changed when you see this 
+*/
+
+/*VARIABLES AND BASE STYLING*/
+:root{
+    --border_color: rgba(222, 228, 216, 0.7);
+    --black_background: rgba(13, 19, 7, 0.7);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    background-color: rgba(27, 25, 25, 1);
+}
+
+/*The Code*/
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 40px;
+}
+
+.jar{
+    position: relative;
+    display: flex;
+    border-radius: 30px 30px 38px 38px; 
+}
+
+.the_jar{
+    width: 158px;
+    height: 250px;
+    position: relative;
+
+    background-color: var(--border_color);  
+
+    /*border: 16px solid var(--border_color);*/
+    border-radius: 30px 30px 38px 38px;
+    border: 16px solid transparent;
+    
+    animation: fluid_color 5s linear infinite;
+    animation-delay: calc(var(--x) * -1.5s);
+}
+.the_jar::after{
+    width: 160px;
+    height: 250px;
+    position: absolute;
+    z-index: 5;
+
+    background-color: transparent;  
+
+    /*border: 16px solid var(--border_color);*/
+    border-radius: 60px 60px 68px 68px;
+    border-left: 16px solid var(--border_color);    
+}
+
+.the_jar::before{
+    content: "";
+    position: absolute;
+    width: calc(100% + 12px);
+    height: 40px;
+    border: 10px solid var(--border_color);
+    border-radius: 30px;
+    top: -15px;
+    left: -19px;
+    transform: translateX(1.5%);
+    filter: drop-shadow(0 5px 10px rgba(15, 12, 35, 0.55));
+}
+
+
+.fluid{
+    position: absolute;
+    
+    bottom: -5px;
+    left: -6px;
+    right: inherit;
+    
+    width: calc(100% + 12px);
+    height: calc(100% - 60px);
+    
+    background-color: aqua;
+    filter: drop-shadow(0 0 50px aqua);
+    opacity: 0.6;
+
+    border: 1px solid transparent;
+    border-radius: 0 0 35px 35px;
+
+    animation: anim_fluid 5s linear infinite, 
+    fluid_height 5s linear infinite;
+    animation-delay: calc(var(--x) * -2s);
+}
+
+.fluid::before{
+    content: "";
+    background-color: rgb(0, 187, 187);
+    position: absolute;
+    
+    width: calc(101% + 2px);
+    height: 40px;
+    top: -15px;
+    left: -4px;
+    transform: translateX(1.5%);
+
+    border-radius: 30px;
+       
+}
+
+
+/* Animation Code*/
+
+
+@keyframes fluid_height 
+{
+  0%,12%{ 
+    height: calc(100% - 60px);
+    opacity: 1;
+  }
+  50%,62%
+  {
+    height: calc(100% - 220px);
+  }
+  100%,0%
+  {
+    height: calc(100% - 60px);
+    opacity: 0.65;
+  } 
+}
+
+@keyframes fluid_color 
+{
+    0%,20% {
+        filter: hue-rotate(0deg);  
+    }
+    45%,65%{
+        filter: hue-rotate(180deg);
+    }
+    80%,100%{
+        filter: hue-rotate(340deg);
+    }    
+}
